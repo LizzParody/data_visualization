@@ -37,7 +37,7 @@
       return h - (d * 4); //so the bars won't be upside down
     })
     .attr("width", w / dataset.length - barPadding)//Instead of a static value of 20, the width will now be set as a fraction of the SVG width and number of data points, minus a padding value
-    .attr("height",function (d) { // call the dataset 
+    .attr("height",function (d) { // call the
       return d * 4;
     });
 
