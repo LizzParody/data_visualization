@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bars with svg</title>
+    <script type="text/javascript" src="../d3/d3.js"></script>
+
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    //width and height
+    var w = 500;
+    var h = 100;
+    var barPadding = 1;
+
+    //data
+    var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+                11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
+
+    //create the svg in the dom
+    var svg = d3.select("body")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h);
+
+    //generate the rects with svg
+    svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .attr("x", function (d, i) {
+      return i * (w / dataset.length); //to make the bar char even, dinamic, x value is tied directly to the width of svg (w)
+    })
+    .attr("y", function (d) {
+      return h - (d * 4); //so the bars won't be upside down
+    })
+    .attr("width", w / dataset.length - barPadding)//Instead of a static value of 20, the width will now be set as a fraction of the SVG width and number of data points, minus a padding value
+    .attr("height",function (d) { // call the dataset 
+      return d * 4;
+    });
+
+    </script>
+
+  </body>
+</html>
