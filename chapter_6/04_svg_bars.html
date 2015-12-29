@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bars with svg</title>
+    <script type="text/javascript" src="../d3/d3.js"></script>
+
+  </head>
+  <body>
+
+    <script type="text/javascript">
+    //width and height
+    var w = 500;
+    var h = 100;
+
+    //data
+    var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+                11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
+    //create the svg in the dom
+    var svg = d3.select("body")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h);
+
+    //generate the rects with svg
+    svg.selectAll("rect")
+    .data(dataset)
+    .enter()
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 20)
+    .attr("height", 100);
+
+
+    </script>
+
+  </body>
+</html>
